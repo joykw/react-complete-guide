@@ -11,7 +11,8 @@ import Person from './Person/Person';
         {name: 'Manu', age: 29 },
         {name: 'Stephanie', age: 26 },
       ],
-    otherState: "some other value"
+    otherState: 'some other value',
+    showPersons: false
   };
 
  // const [otherState, setOtherState] = useState('some other value')
@@ -42,6 +43,10 @@ import Person from './Person/Person';
       })
     }
   
+    togglePersonsHandler = () => {
+      const doesShow = this.state.showPersons;
+      this.setState({showPersons: !doesShow});
+    }
   
   render (){
     const style = {
@@ -59,7 +64,11 @@ import Person from './Person/Person';
         <p>This is really working!</p>
         <button 
         style={style}
-        onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
+        onClick={this.togglePersonsHandler}>Switch Name</button>
+
+      {/* //include ternary expression for conditional */}
+      {this.state.showPersons === true ? 
+       <div>
         <Person 
         name={this.state.persons[0].name} 
         age={this.state.persons[0].age}/>
@@ -71,6 +80,8 @@ import Person from './Person/Person';
         <Person
          name={this.state.persons[2].name} 
          age={this.state.persons[2].age}/>
+         </div> : null }
+
       </div>
     )
    }
