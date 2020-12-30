@@ -28,7 +28,7 @@ import Person from './Person/Person';
     }
 
     deletePersonHandler = (personIndex) => {
-      const persons = this.state.persons;
+      const persons = this.state.persons.slice();
       persons.splice(personIndex, 1);
       this.setState({persons: persons})
 
@@ -38,6 +38,7 @@ import Person from './Person/Person';
 
     togglePersonsHandler = () => {
       const doesShow = this.state.showPersons;
+
       this.setState({showPersons: !doesShow});
     }
   
