@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import './App.css';
+import Radium from 'radium';
 import Person from './Person/Person';
 
 //const app = props => {
@@ -61,7 +62,13 @@ import Person from './Person/Person';
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      //by installing & importing radium, we can include pseudo-selectors to inline styling. 
+      //pseudo-selectors must be in quotation marks and begin with a colon
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
 
     };
 
@@ -82,7 +89,15 @@ import Person from './Person/Person';
         
          </div> 
       )
-      style.backgroundColor = 'red'
+      //overwriting the style from above styling
+      style.backgroundColor = 'red';
+      //overwritng hover in this case we use [] instead of style .dot hover because it is a string
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+
+      };
+
     }
    const classes = [];
     if(this.state.persons.length <= 2) {
@@ -110,7 +125,7 @@ import Person from './Person/Person';
     
   
 
-export default App;
+export default Radium(App);
 
 
 
